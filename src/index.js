@@ -30,12 +30,12 @@ const main = function () {
 //  });
 // console.log(api.BASE_URL);
 
-//api.getItems()
-//  .then(res => res.json())
-//  .then((items) => {
-//    items.forEach((item) => store.addItem(item));
-//    shoppingList.render();
-//  });
+api.getItems()
+  .then(res => res.json())
+  .then((items) => {
+    items.forEach((item) => store.addItem(item));
+    shoppingList.render();
+  });
 
 api.getItems()
   .then(res => res.json())
