@@ -40,12 +40,18 @@ const render = function () {
     items = items.filter(item => !item.checked);
   }
 
+  if(store.error) {
+    window.alert(store.error);
+  }
+
   // render the shopping list in the DOM
   const shoppingListItemsString = generateShoppingItemsString(items);
 
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
 };
+
+
 
 const handleNewItemSubmit = function () {
   $('#js-shopping-list-form').submit(function (event) {
