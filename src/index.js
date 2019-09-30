@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import api from '/api';
+import api from './api';
 
 import 'normalize.css';
 import './index.css';
@@ -19,14 +19,22 @@ const main = function () {
 //  .then(res => res.json())
 //  .then(res => console.log(res));
 
-api.createItem('pears')
-  .then(res => res.json())
-  .then((newItem) => {
-    return api.getItems();
-  })
+//api.createItem('pears')
+//  .then(res => res.json())
+//  .then((newItem) => {
+//    return api.getItems();
+//  })
+//  .then(res => res.json())
+//  .then((items) => {
+//    console.log(items);
+//  });
+// console.log(api.BASE_URL);
+
+api.getItems()
   .then(res => res.json())
   .then((items) => {
-    console.log(items);
+     items.forEach((item) => store.addItem(item));
+     shoppingList.render();
   });
 
   shoppingList.bindEventListeners();
