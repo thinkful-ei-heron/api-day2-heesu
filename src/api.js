@@ -27,9 +27,28 @@ const deleteItem = function(id) {
   };
 };
 
+const checkError = function(...args) {
+  let error;
+  return fetch(...args)
+    .then(res => {
+      if(!res.ok) {
+        error={code: res.status};
+      }
+      return res.json();
+    })
+    .then(resJson => {
+      if(error) {
+        error.message=resJson.message;
+        return Promise.reject(error);
+      }
+      return resJson;
+    });
+};
+
 export default {
   getItems,
   createItem,
   updateItem,
-  deleteItem
+  deleteItem,
+  checkError 
 };
