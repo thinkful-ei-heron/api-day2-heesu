@@ -11,9 +11,14 @@ const addItem = function (newItem) {
   this.items.push(newItem);
 };
 
-const findAndToggleChecked = function (id) {
-  const currentItem = this.findById(id);
-  currentItem.checked = !currentItem.checked;
+//const findAndToggleChecked = function (id) {
+//  const currentItem = this.findById(id);
+//  currentItem.checked = !currentItem.checked;
+//};
+
+const findAndUpdate = function(id, newData) {
+  let currentItem = this.findById(id);
+  Object.assign(currentItem, newData);
 };
 
 const findAndUpdateName = function (id, name) {
@@ -39,8 +44,9 @@ export default {
   hideCheckeditems,
   findById,
   addItem,
-  findAndToggleChecked,
+  //findAndToggleChecked,
   findAndUpdateName,
   findAndDelete,
-  toggleCheckedFilter
+  toggleCheckedFilter,
+  findAndUpdate
 };

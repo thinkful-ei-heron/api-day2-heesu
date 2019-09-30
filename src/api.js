@@ -11,7 +11,16 @@ const createItem = function(name) {
     body: newItem});
 };
 
+const updateItem = function(id, updateData) {
+  return fetch(`${BASE_URL}/items/${id}`,{
+    method: 'PACTH',
+    header: {'Content-Type': 'application/json'},
+    body: JSON.stringify(updateData)
+  });
+}
+
 export default {
   getItems,
-  createItem
+  createItem,
+  updateItem
 };
