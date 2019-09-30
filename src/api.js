@@ -6,7 +6,8 @@ const getItems = function() {
 
 const createItem = function(name) {
   let newItem = JSON.stringify(name)
-  return fetch(`${BASE_URL}/items`, {method: 'POST', 
+  return fetch(`${BASE_URL}/items`, {
+    method: 'POST', 
     header: {'Content-Type': 'application/json'},
     body: newItem});
 };
@@ -17,10 +18,18 @@ const updateItem = function(id, updateData) {
     header: {'Content-Type': 'application/json'},
     body: JSON.stringify(updateData)
   });
-}
+};
+
+const deleteItem = function(id) {
+  return fetch(`${BASE_URL}/items/${id}`), {
+    method: 'DELETE',
+    header: {'Content-Type': 'application/json'},
+  };
+};
 
 export default {
   getItems,
   createItem,
-  updateItem
+  updateItem,
+  deleteItem
 };
